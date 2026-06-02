@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@import "@acko/tokens/tokens.css";
+@import "@acko/tokens/theme.css";
+
+@import "@acko/css/accordion.css";
+@import "@acko/css/alert.css";
+@import "@acko/css/avatar.css";
+@import "@acko/css/badge.css";
+@import "@acko/css/breadcrumb.css";
+@import "@acko/css/button.css";
+@import "@acko/css/calendar.css";
+@import "@acko/css/card.css";
+@import "@acko/css/checkbox.css";
+@import "@acko/css/dropdown.css";
+@import "@acko/css/field.css";
+@import "@acko/css/input-group.css";
+@import "@acko/css/label.css";
+@import "@acko/css/navigation-wizard.css";
+@import "@acko/css/pagination.css";
+@import "@acko/css/progress.css";
+@import "@acko/css/radio.css";
+@import "@acko/css/scroll-area.css";
+@import "@acko/css/separator.css";
+@import "@acko/css/skeleton.css";
+@import "@acko/css/switch.css";
+@import "@acko/css/table.css";
+@import "@acko/css/tabs.css";
+@import "@acko/css/text-input.css";
+@import "@acko/css/textarea.css";
+@import "@acko/css/toggle.css";
+@import "@acko/css/tooltip.css";
+@import "@acko/css/typography.css";
+
+body {
+  font-family: "Euclid Circular B", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
