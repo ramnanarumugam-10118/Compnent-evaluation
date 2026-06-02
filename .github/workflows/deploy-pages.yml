@@ -1,8 +1,15 @@
 name: Deploy to GitHub Pages
 
+# The ACKO design system packages are served from an internal Nexus registry
+# that GitHub's hosted runners cannot reach, so the app is built locally and the
+# pre-built `dist/` folder is committed. This workflow just publishes that folder.
+
 on:
   push:
     branches: [main]
+    paths:
+      - "dist/**"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -15,43 +22,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Configure ACKO registry auth
-        if: ${{ secrets.ACKO_NPM_TOKEN != '' }}
-        run: |
-          echo "//nexus-dev.acko.in:8080/repository/quark-skill/:_authToken=${{ secrets.ACKO_NPM_TOKEN }}" >> .npmrc
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-        env:
-          VITE_BASE_PATH: /Compnent-evaluation/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Typography } from "@acko/typography";
 import { Button } from "@acko/button";
 import { Card, CardContent, CardHeader, CardFooter } from "@acko/card";
-import { Badge } from "@acko/badge";
 import { Alert } from "@acko/alert";
 import { Accordion } from "@acko/accordion";
 import { Avatar } from "@acko/avatar";
@@ -603,7 +602,7 @@ export default function ArticleDemo() {
             <div>
               <Typography variant="body-md" color="secondary" className="mb-10">
                 Section 146 of the{" "}
-                <Typography variant="body-md" color="brand" as="a" href="#">Motor Vehicles Act, 1988</Typography>{" "}
+                <a href="#" style={{ textDecoration: "none" }}><Typography variant="body-md" color="brand" as="span">Motor Vehicles Act, 1988</Typography></a>{" "}
                 makes it unlawful to use a motor vehicle without a policy.
                 <sup style={{ fontSize: 10, color: "var(--colorTextBrand)" }}>[1]</sup>
               </Typography>
